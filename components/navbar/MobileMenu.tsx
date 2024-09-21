@@ -1,6 +1,9 @@
 import Link from "next/link";
 import navLinks from "./navLinks";
 import { RiCloseFill } from "react-icons/ri";
+import Logo from "../Logo";
+import { TypographyP } from "../text/p";
+import { TypographyH4 } from "../text/h4";
 
 const MobileMenu = ({
   isMenuOpen,
@@ -18,17 +21,16 @@ const MobileMenu = ({
 
   return (
     <div
-      className={`fixed top-0 transition-all duration-300 z-50 w-2/4 md:w-2/5 lg:w-3/6 ${
+      className={`fixed top-0 transition-all duration-300 z-50 w-full md:w-2/5 lg:w-3/6 ${
         isMenuOpen ? "right-0 h-full" : "-right-full h-0"
-      } backdrop-blur-3xl shadow-md`}
+      } backdrop-blur-3xl shadow-md bg-black/35`}
     >
       <div className="flex justify-between items-center p-4">
         <div className="flex gap-2 items-center justify-center">
-          <span className="w-12 h-12 bg-custom-primary rounded-full"></span>
-          <p>Por su Gracia</p>
+          <Logo />
         </div>
         <span onClick={() => setIsMenuOpen(false)}>
-          <RiCloseFill size={40} color={isScrolled ? "black" : "white"} />
+          <RiCloseFill size={40} color="white" />
         </span>
       </div>
 
@@ -45,16 +47,14 @@ const MobileMenu = ({
               <Link
                 key={href}
                 href={href}
-                className={`flex justify-start items-center px-2 py-4 md:px-12 w-full text-sm md:text-lg hover:bg-custom-red hover:text-white font-bold ${
-                  isScrolled ? "text-black" : "text-white"
-                }`}
+                className={`flex justify-start items-center px-4 py-4 md:px-12 w-full text-sm md:text-lg hover:bg-custom-primary hover:text-white font-bold text-white`}
               >
                 <li
                   key={href}
                   className="flex justify-start w-2/4 items-center gap-4"
                   onClick={handleLinkClick}
                 >
-                  <Icon fontSize={20}/> {/* Render Icon if it exists */}
+                  <Icon fontSize={20} />
                   {text}
                 </li>
               </Link>
@@ -62,16 +62,31 @@ const MobileMenu = ({
           } else {
             // For social media icons
             return (
-              <li
-                key={`social-icons-${index}`}
-                className="flex gap-4 items-center justify-around p-4 w-3/5"
-              >
-                {link.map(({ href, icon: Icon }) => (
-                  <Link key={href} href={href} onClick={handleLinkClick}>
-                    <Icon color={isScrolled ? "black" : "white"} />
-                  </Link>
-                ))}
-              </li>
+              <div>
+                <TypographyH4 className="text-white/70">
+                  {" "}
+                  Síguenos
+                </TypographyH4>
+                <li
+                  key={`social-icons-${index}`}
+                  className={`flex gap-4 items-center justify-around p-4 w-full`}
+                >
+                  {link.map(({ href, icon: Icon }) => (
+                    <Link key={href} href={href} onClick={handleLinkClick}>
+                      <Icon
+                        fontSize={30}
+                        color={
+                          href.includes("youtube")
+                            ? "red"
+                            : href.includes("facebook")
+                            ? "blue"
+                            : "pink"
+                        }
+                      />
+                    </Link>
+                  ))}
+                </li>
+              </div>
             );
           }
         })}

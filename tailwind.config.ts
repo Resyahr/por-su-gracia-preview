@@ -22,8 +22,10 @@ const config = {
       colors: {
         custom: {
           primary: "#0967F2",
+          secondary: "#6B7280",
           red: "#ED0908",
           "text-muted": "#374151",
+          logo: "#40BB94"
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -80,6 +82,8 @@ const config = {
       },
       backgroundImage: {
         heroBackground: "var(--hero-bg)",
+		heroBackgroundSm: "var(--hero-bg-sm)",
+		heroBackgroundMd: "var(--hero-bg-md)",
       },
     },
   },

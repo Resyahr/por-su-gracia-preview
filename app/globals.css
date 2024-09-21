@@ -5,6 +5,8 @@
 @layer base {
   :root {
     --hero-bg: url('../public/heroBg.jpeg');
+    --hero-bg-md: url('../public/heroBgMd.jpeg');
+    --hero-bg-sm: url('../public/heroBgSm.jpeg');
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;

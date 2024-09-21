@@ -9,7 +9,7 @@ const Main = () => {
   return (
     <motion.div /* style={{ scaleX: scrollYProgress }} */>
       <PreMain />
-      <main className="py-20 px-4 md:px-8 lg:px-16 xl:px-32">
+      <main className="">
         <AboutUs />
       </main>
     </motion.div>

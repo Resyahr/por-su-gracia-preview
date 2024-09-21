@@ -8,6 +8,7 @@ import { RiMenu4Fill, RiCloseFill } from "react-icons/ri";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import Logo from "../Logo";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -69,18 +70,8 @@ export const Navbar = () => {
         <div className="flex items-center justify-between p-4">
           {/* Logo */}
           <div className="flex gap-2 items-center justify-between transition-opacity duration-300">
-            <span
-              className={`${
-                isScrolled ? "w-12 h-12" : "w-16 h-16"
-              } transition-all duration-300 bg-custom-primary rounded-full`}
-            ></span>
-            <span
-              className={`${
-                isScrolled ? "text-custom-primary" : "text-white"
-              } text-lg font-bold tracking-tighter`}
-            >
-              Por su gracia
-            </span>
+            <Logo isScrolled={isScrolled}/>
+            
           </div>
 
           <div className="flex gap-5 justify-between items-center  ">
