@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useAnimation, motion, useInView } from "framer-motion";
+import personWithBible from "@/public/personWithBible.jpg";
 import personPraying from "@/public/personPraying.jpg";
 import churchMusic from "@/public/churchMusic.jpg";
 import bibleStudy from "@/public/bibleStudy.jpg"; // Add another image for the new card
@@ -68,7 +69,8 @@ const AboutUs = () => {
         initial="hidden"
         animate={controls}
       >
-        <motion.div variants={cardVariants}>
+        {/* Card 1 */}
+        <motion.div variants={cardVariants} className="w-full">
           <WobbleCardReusable
             containerClassNames="bg-custom-primary text-white hover:shadow-lg transition-all duration-300 flex flex-col justify-between min-h-[400px] h-full"
             cardTitle="Adoramos"
@@ -80,7 +82,8 @@ const AboutUs = () => {
           />
         </motion.div>
 
-        <motion.div variants={cardVariants}>
+        {/* Card 2 */}
+        <motion.div variants={cardVariants} className="w-full">
           <WobbleCardReusable
             containerClassNames="bg-custom-red text-white hover:shadow-lg transition-all duration-300 flex flex-col justify-between min-h-[400px] h-full"
             cardTitle="Oramos"
@@ -93,26 +96,26 @@ const AboutUs = () => {
           />
         </motion.div>
 
-        <motion.div variants={cardVariants}>
+        {/* Card 3 */}
+        <motion.div variants={cardVariants} className="w-full">
           <WobbleCardReusable
             containerClassNames="bg-custom-secondary text-white hover:shadow-lg transition-all duration-300 flex flex-col justify-between min-h-[400px] h-full"
             cardTitle="Estudiamos la Biblia"
             colSpan="col-span-1"
             description="Estudiamos y aprendemos la palabra de Dios para aplicarla en nuestra vida diaria."
             image
-            src={bibleStudy} // You can change the image source to something more relevant
+            src={bibleStudy}
             alt="Bible study"
           />
         </motion.div>
 
-        {/* New Card (Example Content) */}
-        <motion.div variants={cardVariants}>
+        {/* Card 4 */}
+        <motion.div variants={cardVariants} className="w-full">
           <WobbleCardReusable
             containerClassNames="bg-custom-logo text-white hover:shadow-lg transition-all duration-300 flex flex-col justify-between min-h-[400px] h-full"
             cardTitle="Ayudamos"
             colSpan="col-span-1"
             description="Extendemos una mano amiga a quienes lo necesitan a través de actividades de servicio y apoyo comunitario."
-            // No image here for simplicity
           />
         </motion.div>
       </motion.div>
