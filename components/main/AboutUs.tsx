@@ -48,7 +48,7 @@ const AboutUs = () => {
   }, [controls, isInView]);
 
   return (
-    <section className="py-12 px-4 md:px-8 lg:px-16 xl:px-32" ref={ref}>
+    <section className="py-12 px-4 md:px-8 lg:px-16 xl:px-32 bg-custom-background-light" ref={ref}>
       <div className="max-w-4xl mx-auto mb-8">
         <TypographyH2 className="text-center text-gray-800 mb-4 leading-tight tracking-wide">
           Somos{" "}

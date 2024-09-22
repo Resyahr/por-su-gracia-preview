@@ -1,14 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import navLinks from "./navLinks";
 import { RiCloseFill } from "react-icons/ri";
 import Logo from "../Logo";
-import { TypographyP } from "../text/p";
-import { TypographyH4 } from "../text/h4";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 const MobileMenu = ({
   isMenuOpen,
   setIsMenuOpen,
-  isScrolled,
 }: {
   isMenuOpen: boolean;
   setIsMenuOpen: (state: boolean) => void;
@@ -16,7 +21,11 @@ const MobileMenu = ({
 }) => {
   const handleLinkClick = () => {
     setIsMenuOpen(false);
-    console.log(isMenuOpen);
+  };
+
+  const handleAccordionClick = (event: React.MouseEvent) => {
+    // Detenemos la propagación del evento para que no cierre el menú
+    event.stopPropagation();
   };
 
   return (
@@ -34,63 +43,77 @@ const MobileMenu = ({
         </span>
       </div>
 
-      <ul
-        className={`flex flex-col items-center justify-center py-4${
-          isScrolled && "divide-black"
-        }`}
-      >
+      <Accordion type="single" collapsible className="w-full">
         {navLinks.map((link, index) => {
           if (!Array.isArray(link)) {
-            // For regular nav links
-            const { href, text, icon: Icon } = link;
+            const { href, text, icon: Icon, subLinks } = link;
+
+            // Si el link contiene subLinks, lo hacemos un Accordion
+            if (subLinks && subLinks.length > 0) {
+              return (
+                <AccordionItem value={text} key={index} className="px-4 py-2 md:px-12 w-full ≈">
+                  <AccordionTrigger onClick={handleAccordionClick}>
+                    <div className="flex items-center gap-4 text-sm md:text-lg font-bold text-white">
+                      <Icon fontSize={20} className="text-white" />
+                      {text}
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="pl-8 ">
+                    {subLinks.map((subLink) => (
+                      <Link
+                        key={subLink.href}
+                        href={subLink.href!}
+                        className="block text-white text-sm  hover:bg-custom-primary hover:text-white"
+                        onClick={handleLinkClick}
+                      >
+                        {subLink.text}
+                      </Link>
+                    ))}
+                  </AccordionContent>
+                </AccordionItem>
+              );
+            }
+
+            // Si no tiene subLinks, renderizamos el link normal sin icono de Accordion
             return (
-              <Link
-                key={href}
-                href={href}
-                className={`flex justify-start items-center px-4 py-4 md:px-12 w-full text-sm md:text-lg hover:bg-custom-primary hover:text-white font-bold text-white`}
-              >
-                <li
-                  key={href}
-                  className="flex justify-start w-2/4 items-center gap-4"
+              <div key={href} className="px-4 py-2 md:px-12 w-full  hover:bg-custom-primary hover:text-white">
+                <Link
+                  href={href!}
+                  className="flex justify-start items-center w-full text-sm md:text-lg font-bold text-white"
                   onClick={handleLinkClick}
                 >
-                  <Icon fontSize={20} />
+                  <Icon fontSize={20} className="mr-2 text-white" /> {/* Color corregido */}
                   {text}
-                </li>
-              </Link>
+                </Link>
+              </div>
             );
           } else {
-            // For social media icons
+            // Para los links de redes sociales (sin accordion)
             return (
-              <div>
-                <TypographyH4 className="text-white/70">
-                  {" "}
-                  Síguenos
-                </TypographyH4>
-                <li
-                  key={`social-icons-${index}`}
-                  className={`flex gap-4 items-center justify-around p-4 w-full`}
-                >
-                  {link.map(({ href, icon: Icon }) => (
-                    <Link key={href} href={href} onClick={handleLinkClick}>
-                      <Icon
-                        fontSize={30}
-                        color={
-                          href.includes("youtube")
-                            ? "red"
-                            : href.includes("facebook")
-                            ? "blue"
-                            : "pink"
-                        }
-                      />
-                    </Link>
-                  ))}
-                </li>
+              <div
+                key={`social-icons-${index}`}
+                className="flex gap-4 items-center justify-center mt-6"
+              >
+                {link.map(({ href, icon: Icon }) => (
+                  <Link key={href} href={href} onClick={handleLinkClick}>
+                    <Icon
+                      fontSize={30}
+                      className="hover:text-custom-primary transition duration-300"
+                      color={
+                        href.includes("youtube")
+                          ? "red"
+                          : href.includes("facebook")
+                          ? "blue"
+                          : "pink"
+                      }
+                    />
+                  </Link>
+                ))}
               </div>
             );
           }
         })}
-      </ul>
+      </Accordion>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import logo from "@/public/logo.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 const Logo = ({
   className,
@@ -9,7 +10,8 @@ const Logo = ({
   isScrolled?: boolean;
 }) => {
   return (
-    <div className="flex gap-2 justify-center items-center">
+   
+      <Link href="/" className="flex gap-2 justify-center items-center">
       <Image
         src={logo}
         alt="Logo"
@@ -24,7 +26,8 @@ const Logo = ({
       >
         Por su gracia <br /> International Church
       </span>
-    </div>
+    </Link>
+
   );
 };
 

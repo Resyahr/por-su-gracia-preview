@@ -12,9 +12,10 @@ import { FaHeart } from "react-icons/fa";
 
 
 interface NavLink {
-  href: string;
+  href?: string;
   text: string;
   icon: React.ComponentType<IconProps>; // The icon is a React component
+  subLinks?: NavLink[]; // Sub-links for nested navigation
 }
 
 interface SocialLink {
@@ -34,19 +35,41 @@ const navLinks: NavLinkOrSocialLink[] = [
     icon: FaHouse,
   },
   {
-    href: "#aboutUs",
     text: "Nosotros",
     icon: IoPeople,
+    subLinks: [
+      {
+        href: "#aboutUs",
+        text: "Nuestra Historia",
+        icon: IoPeople,
+      },
+      {
+        href: "#team",
+        text: "Nuestro Equipo",
+        icon: IoPeople,
+      },
+    ],
   },
   {
-    href: "#services",
     text: "Servicios",
     icon: FaPersonPraying,
-  },
-  {
-    href: "#events",
-    text: "Eventos",
-    icon: BsCalendarEventFill,
+    subLinks: [
+      {
+        href: "#worship",
+        text: "Adoración",
+        icon: FaPersonPraying,
+      },
+      {
+        href: "#prayer",
+        text: "Oración",
+        icon: FaPersonPraying,
+      },
+      {
+        href: "#events",
+        text: "Eventos",
+        icon: BsCalendarEventFill,
+      },
+    ],
   },
   {
     href: "#contact",
@@ -61,19 +84,20 @@ const navLinks: NavLinkOrSocialLink[] = [
   {
     href: "#live",
     text: "En vivo",
-    icon: IoLogoYoutube
+    icon: IoLogoYoutube,
   },
+  // Social Links
   [
     {
-      href: "#youtube",
+      href: "https://youtube.com",
       icon: IoLogoYoutube,
     },
     {
-      href: "#facebook",
+      href: "https://facebook.com",
       icon: FaFacebookSquare,
     },
     {
-      href: "Instagram",
+      href: "https://instagram.com",
       icon: AiFillInstagram,
     },
   ],

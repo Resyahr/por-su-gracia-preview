@@ -5,7 +5,7 @@ import { IoLogoYoutube } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
 import { RiMenu4Fill, RiCloseFill } from "react-icons/ri";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
 import Logo from "../Logo";
@@ -14,12 +14,22 @@ export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Creamos un ref para referenciar el MobileMenu
+  const menuRef = useRef<HTMLDivElement>(null);
+
   const handleMenutoggle = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
   useEffect(() => {
-    const handleCloseMenu = () => {
+    const handleClickOutside = (event: MouseEvent) => {
+      // Si el clic fue fuera del MobileMenu, cerramos el menú
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    const handleResize = () => {
       setIsMenuOpen(false);
     };
 
@@ -34,19 +44,21 @@ export const Navbar = () => {
       }
     };
 
+    // Solo agregamos los event listeners cuando el menú está abierto
     if (isMenuOpen) {
-      document.body.addEventListener("click", handleCloseMenu);
+      document.addEventListener("click", handleClickOutside);
+      window.addEventListener("resize", handleResize);
     }
 
-    window.addEventListener("resize", handleCloseMenu);
     window.addEventListener("scroll", handleNavShadow);
 
     return () => {
-      document.body.removeEventListener("click", handleCloseMenu);
-      window.removeEventListener("resize", handleCloseMenu);
+      // Removemos los event listeners cuando el componente se desmonta o el menú se cierra
+      document.removeEventListener("click", handleClickOutside);
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleNavShadow);
     };
-  }, []);
+  }, [isMenuOpen]);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -63,21 +75,18 @@ export const Navbar = () => {
           isScrolled
             ? "shadow-md backdrop-blur-2xl backdrop-filter bg-white/80"
             : "shadow-none bg-transparent"
-        } ${
-          isMenuOpen ? "shadow-none" : "shadow-md"
-        } transition-all duration-500`}
+        } ${isMenuOpen ? "shadow-none" : "shadow-md"} transition-all duration-500`}
       >
         <div className="flex items-center justify-between p-4">
           {/* Logo */}
           <div className="flex gap-2 items-center justify-between transition-opacity duration-300">
-            <Logo isScrolled={isScrolled}/>
-            
+            <Logo isScrolled={isScrolled} />
           </div>
 
-          <div className="flex gap-5 justify-between items-center  ">
+          <div className="flex gap-5 justify-between items-center">
             {/*  <DesktopLinks isScrolled={isScrolled} /> */}
             {/* Here the cta buttons */}
-            <div className="hidden md:flex gap-4 itemce justify-center">
+            <div className="hidden md:flex gap-4 items-center justify-center">
               <Button className="flex gap-2 bg-custom-primary" size={"sm"}>
                 <span> Donar </span> <FaHeart color="white" />
               </Button>
@@ -105,11 +114,15 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
-      <MobileMenu
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-        isScrolled={isScrolled}
-      />
+      
+      {/* Añadimos el ref al MobileMenu */}
+      <div ref={menuRef}>
+        <MobileMenu
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          isScrolled={isScrolled}
+        />
+      </div>
     </>
   );
 };
