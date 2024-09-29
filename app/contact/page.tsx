@@ -1,5 +1,5 @@
 import { SubHero } from "@/components/reusable/SubHero";
-import { ContactForm } from "@/components/main/Contact";
+import ContactForm from "@/components/main/Contact";
 
 const Contact = () => {
   return (

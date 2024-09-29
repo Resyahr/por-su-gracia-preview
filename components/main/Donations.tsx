@@ -5,7 +5,6 @@ import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { containerVariants, textVariants, buttonVariants } from "@/utils/animations"; // Reuse animations
 import CTAButton from "../reusable/CTAButton"; // Import the reusable CTAButton
-import Link from "next/link";
 
 export function DonationsSection() {
   // Framer Motion controls and scroll-trigger

@@ -4,7 +4,7 @@ import { TypographyH1 } from "@/components/text/h1";
 import { TypographyP } from "@/components/text/p";
 import ReusableCTAButton from "@/components/reusable/CTAButton";
 import { motion } from "framer-motion";
-import { containerVariants, textVariants } from "@/utils/animations";
+import { containerVariants } from "@/utils/animations";
 import { SubHero } from "@/components/reusable/SubHero"; // Import SubHero
 
 const GetInvolvedPage = () => {

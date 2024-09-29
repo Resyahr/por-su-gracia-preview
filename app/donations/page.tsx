@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import donationImage1 from "@/public/donationImage1.jpg";
 import donationImage2 from "@/public/donationImage2.jpg";
