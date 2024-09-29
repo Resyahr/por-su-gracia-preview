@@ -13,7 +13,7 @@ interface SubHeroProps {
 export const SubHero = ({ title, description, backgroundImage }: SubHeroProps) => {
   return (
     <section
-      className="relative flex items-center justify-center bg-cover bg-center h-72 w-full p-8"
+      className="relative flex items-center justify-center bg-cover bg-center h-72 w-full py-12"
       style={{
         backgroundImage: backgroundImage
           ? `url(${backgroundImage})`

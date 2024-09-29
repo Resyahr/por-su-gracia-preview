@@ -39,12 +39,12 @@ const navLinks: NavLinkOrSocialLink[] = [
     icon: IoPeople,
     subLinks: [
       {
-        href: "#aboutUs",
+        href: "/about-us",
         text: "Nuestra Historia",
         icon: IoPeople,
       },
       {
-        href: "#team",
+        href: "/about-us#team",
         text: "Nuestro Equipo",
         icon: IoPeople,
       },
@@ -55,52 +55,37 @@ const navLinks: NavLinkOrSocialLink[] = [
     icon: FaPersonPraying,
     subLinks: [
       {
-        href: "#worship",
+        href: "/services#worship",
         text: "Adoración",
         icon: FaPersonPraying,
       },
       {
-        href: "#prayer",
+        href: "/services#prayer",
         text: "Oración",
         icon: FaPersonPraying,
       },
       {
-        href: "#events",
+        href: "/services#events",
         text: "Eventos",
         icon: BsCalendarEventFill,
       },
     ],
   },
   {
-    href: "#contact",
+    href: "/contact",
     text: "Contacto",
     icon: MdContactPhone,
   },
   {
-    href: "#donation",
+    href: "/donations",
     text: "Donaciones",
     icon: FaHeart,
   },
   {
-    href: "#live",
+    href: "/live",
     text: "En vivo",
     icon: IoLogoYoutube,
   },
-  // Social Links
-  [
-    {
-      href: "https://youtube.com",
-      icon: IoLogoYoutube,
-    },
-    {
-      href: "https://facebook.com",
-      icon: FaFacebookSquare,
-    },
-    {
-      href: "https://instagram.com",
-      icon: AiFillInstagram,
-    },
-  ],
 ];
 
 export default navLinks;

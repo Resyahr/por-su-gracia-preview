@@ -1,34 +1,10 @@
+'use client'
+
 import React, { useEffect, useRef } from "react";
 import { TypographyH2 } from "../text/h2";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { TypographyLead } from "../text/lead";
-
-// Framer Motion variants for animation
-const containerVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1,
-      ease: [0.42, 0, 0.58, 1], // easeInOutCubic for smooth entrance
-      when: "beforeChildren", // Ensure container animates before its children
-      staggerChildren: 0.2,   // Stagger the animation of each child
-    },
-  },
-};
-
-const textVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.42, 0, 0.58, 1], // Smooth cubic easing
-    },
-  },
-};
+import { containerVariants, textVariants } from "@/utils/animations";
 
 const PreMain = () => {
   // Animation control
@@ -53,15 +29,16 @@ const PreMain = () => {
       animate={controls}
       ref={ref} // Attach the ref for in-view detection
     >
+      {/* Lead Text */}
       <motion.div variants={textVariants}>
-        <TypographyLead className="mt-4 leading-tight text-lg text-white/65">
-          Un lugar donde encontrarás esperanza, amor y una comunidad unida en
-          fe.
+        <TypographyLead className="mt-4 leading-tight text-white">
+          Un lugar donde encontrarás esperanza, amor y una comunidad unida en fe.
         </TypographyLead>
       </motion.div>
 
+      {/* Bible Verse */}
       <motion.div variants={textVariants}>
-        <TypographyH2>
+        <TypographyH2 className="text-custom-highlight">
           <q>
             Vengan a mí todos ustedes que están cansados y agobiados, y yo les
             daré descanso.

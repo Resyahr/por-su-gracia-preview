@@ -1,9 +1,10 @@
-import { ContactForm } from "@/components/main/Contact";
-import Hero from "@/components/Hero";
+import Contact  from "@/components/main/Contact";
+import Hero from "@/components/main/Hero";
 import AddressSection from "@/components/main/Address";
-import Main from "@/components/main/Main"
 import { DonationsSection } from "@/components/main/Donations";
 import { KnowThePastor } from "@/components/main/KnowThePastor";
+import AboutUs from "@/components/main/AboutUs";
+import PreMain from "@/components/main/preMain";
 
 export default function Home() {
   return (
@@ -12,19 +13,23 @@ export default function Home() {
       <Hero />
 
       {/* Main content about the church mission or services */}
-      <Main />
+      <main>
+        <PreMain />
 
-      {/* Meet the pastor section for personal connection */}
-      <KnowThePastor />
+        <AboutUs />
 
-      {/* Donations section encouraging support for the church */}
-      <DonationsSection />
+        {/* Meet the pastor section for personal connection */}
+        <KnowThePastor />
 
-      {/* Address section to provide directions to the church */}
-      <AddressSection />
+        {/* Donations section encouraging support for the church */}
+        <DonationsSection />
 
-      {/* Contact form to let users reach out */}
-      <ContactForm />
+        {/* Address section to provide directions to the church */}
+        <AddressSection />
+
+        {/* Contact form to let users reach out */}
+        <Contact />
+      </main>
     </>
   );
 }

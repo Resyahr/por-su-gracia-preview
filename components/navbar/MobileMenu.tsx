@@ -3,7 +3,7 @@
 import Link from "next/link";
 import navLinks from "./navLinks";
 import { RiCloseFill } from "react-icons/ri";
-import Logo from "../Logo";
+import Logo from "./Logo";
 import {
   Accordion,
   AccordionItem,
@@ -79,7 +79,7 @@ const MobileMenu = ({
               <div key={href} className="px-4 py-2 md:px-12 w-full  hover:bg-custom-primary hover:text-white">
                 <Link
                   href={href!}
-                  className="flex justify-start items-center w-full text-sm md:text-lg font-bold text-white"
+                  className="flex p-4 justify-start items-center w-full text-sm md:text-lg font-bold text-white"
                   onClick={handleLinkClick}
                 >
                   <Icon fontSize={20} className="mr-2 text-white" /> {/* Color corregido */}
