@@ -23,9 +23,17 @@ const AboutUs = () => {
   const sectionRef = useRef(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
-  // Card-specific controls and in-view hooks
-  const cardRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
-  const cardInView = cardRefs.map((ref) => useInView(ref, { once: true, amount: 0.1 }));
+  // Individual card refs
+  const card1Ref = useRef(null);
+  const card2Ref = useRef(null);
+  const card3Ref = useRef(null);
+  const card4Ref = useRef(null);
+
+  // Card in-view triggers
+  const card1InView = useInView(card1Ref, { once: true, amount: 0.1 });
+  const card2InView = useInView(card2Ref, { once: true, amount: 0.1 });
+  const card3InView = useInView(card3Ref, { once: true, amount: 0.1 });
+  const card4InView = useInView(card4Ref, { once: true, amount: 0.1 });
 
   // Trigger section intro animation
   useEffect(() => {
@@ -65,8 +73,8 @@ const AboutUs = () => {
         <motion.div
           variants={cardLeftVariants}
           initial="hidden"
-          animate={cardInView[0] ? "visible" : "hidden"}
-          ref={cardRefs[0]}
+          animate={card1InView ? "visible" : "hidden"}
+          ref={card1Ref}
           className="relative w-full rounded-lg overflow-hidden shadow-lg"
         >
           <Image
@@ -89,8 +97,8 @@ const AboutUs = () => {
         <motion.div
           variants={cardRightVariants}
           initial="hidden"
-          animate={cardInView[1] ? "visible" : "hidden"}
-          ref={cardRefs[1]}
+          animate={card2InView ? "visible" : "hidden"}
+          ref={card2Ref}
           className="relative w-full rounded-lg overflow-hidden shadow-lg"
         >
           <Image
@@ -113,8 +121,8 @@ const AboutUs = () => {
         <motion.div
           variants={cardLeftVariants}
           initial="hidden"
-          animate={cardInView[2] ? "visible" : "hidden"}
-          ref={cardRefs[2]}
+          animate={card3InView ? "visible" : "hidden"}
+          ref={card3Ref}
           className="relative w-full rounded-lg overflow-hidden shadow-lg"
         >
           <Image
@@ -137,8 +145,8 @@ const AboutUs = () => {
         <motion.div
           variants={cardRightVariants}
           initial="hidden"
-          animate={cardInView[3] ? "visible" : "hidden"}
-          ref={cardRefs[3]}
+          animate={card4InView ? "visible" : "hidden"}
+          ref={card4Ref}
           className="relative w-full rounded-lg overflow-hidden shadow-lg"
         >
           <Image

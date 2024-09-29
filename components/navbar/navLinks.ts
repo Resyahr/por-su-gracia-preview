@@ -1,7 +1,4 @@
 import { IoLogoYoutube } from "react-icons/io5";
-
-import { FaFacebookSquare } from "react-icons/fa";
-import { AiFillInstagram } from "react-icons/ai";
 import { IoPeople } from "react-icons/io5";
 import { FaPersonPraying } from "react-icons/fa6";
 import { BsCalendarEventFill } from "react-icons/bs";

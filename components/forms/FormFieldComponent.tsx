@@ -7,14 +7,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 interface FormFieldComponentProps {
   fieldType: "input" | "textarea"; // Specify if it is input or textarea
   label: string;
   placeholder: string;
   description: string;
-  field: any; // Form control passed from useForm
-}
+  field: UseFormRegisterReturn}
 
 const FormFieldComponent = ({
   fieldType,
